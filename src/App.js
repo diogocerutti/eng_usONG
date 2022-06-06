@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import UserRegister from './views/UserRegister/UserRegister';
+import AttendanceRegister from './views/AttendanceRegister/AttendanceRegister';
 
 export default function App() {
    return (
@@ -15,7 +16,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/userregister" element={<UserRegister/>} />        
+          <Route path="/userregister" element={<UserRegister/>} />      
+          <Route path="/attendanceregister" element={<AttendanceRegister/>} />      
         </Routes> 
       </div>
     </Router>

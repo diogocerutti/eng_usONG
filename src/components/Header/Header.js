@@ -221,7 +221,7 @@ const Header = () => {
                           onKeyDown={handleListKeyDown}
                         >
                           <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='userregister';}}>Cadastro de Usuário</MenuItem>
-                          <MenuItem onClick={handleClose}>Cadastro de Atendimento</MenuItem>
+                          <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='attendanceregister';}}>Cadastro de Atendimento</MenuItem>
                         </MenuList>
                       </ClickAwayListener>
                     </Paper>
