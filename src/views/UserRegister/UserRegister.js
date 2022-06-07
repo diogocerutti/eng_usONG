@@ -9,7 +9,7 @@ import { Button } from '@mui/material';
 export default function UserRegister() {
   return (
     <React.Fragment>
-      <Grid sx={{border: 1, marginTop: '70px', padding: '20px' }}>
+      <Grid sx={{ border: 1, marginTop: '70px', padding: '20px' }}>
         <Grid item xs={12} sm={6} lg={12}>
           <Typography variant="h6" gutterBottom>
             Cadastro de Usuário

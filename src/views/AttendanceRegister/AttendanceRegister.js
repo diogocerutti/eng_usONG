@@ -2,7 +2,7 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { Button, TextareaAutosize } from '@mui/material';
+import { Button } from '@mui/material';
 
 export default function AttendanceRegister() {
 
@@ -26,22 +26,20 @@ export default function AttendanceRegister() {
               variant="standard"
             />
           </Grid>          
-            <Grid item xs={12} sm={6} lg={5.5}>
-                <TextField
-                required
-                id="lastName"
-                name="lastName"
-                label="Detalhes do atendimento"
-                fullWidth  
-                autoComplete="family-name"
-                variant="outlined"
-                multiline
-                rows={10}
-                />
-                {/* <TextareaAutosize minRows={5}/> */}
-            </Grid>
-            
+          <Grid item xs={12} sm={6} lg={5.5}>
+            <TextField
+              required
+              id="lastName"
+              name="lastName"
+              label="Detalhes do atendimento"
+              fullWidth  
+              autoComplete="family-name"
+              variant="outlined"
+              multiline
+              rows={10}
+            />
           </Grid>
+        </Grid>
         <Grid item xs={12} sx={{ marginTop: '20px' }}>
           <TextField
             required
@@ -53,23 +51,23 @@ export default function AttendanceRegister() {
             variant="standard"
             type="date"
           />
-        </Grid>        
+        </Grid>     
         <Grid item xs={12}>
-            <TextField
-                required
-                id="lastName"
-                name="lastName"
-                label="Hora do atendimento"                
-                autoComplete="family-name"
-                variant="standard"
-                type="time"
-            />
+          <TextField
+            required
+            id="lastName"
+            name="lastName"
+            label="Hora do atendimento"                
+            autoComplete="family-name"
+            variant="standard"
+            type="time"
+          />
         </Grid>
         <Grid item xs={12} sm={6} lg={6.5} sx={{ marginTop: '20px' }}>
-            <TextField            
-              variant="outlined"
-              type="file"
-            />
+          <TextField            
+            variant="outlined"
+            type="file"
+          />
         </Grid>
         <Grid container textAlign="center">
           <Grid item xs={4} sm={4} lg={4} sx={{ marginTop: '20px' }}>
