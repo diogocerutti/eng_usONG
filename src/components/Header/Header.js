@@ -123,122 +123,124 @@ const Header = () => {
   }, [openPop]);
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ background: 'green'}}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon sx={{color: "white", fontSize: "40px"}}/>
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            ONG Amigos dos Animais
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-            background: 'green'
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>            
-            <IconButton onClick={handleDrawerClose}>
-                <MenuIcon sx={{fontSize: "40px", color: "white"}}/>
-            {/*theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />*/}
-            </IconButton>        
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {['Home', 'Cadastros', 'Relatórios' ].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{marginBottom: "40px", color: "white"}}>
-              {index === 0 && 
-               <>
-                  <ListItemButton onClick={(e) => {e.preventDefault(); window.location.href='/';}}>
-                    <ListItemIcon>
-                      <HomeIcon style={{fontSize: "40px", color: "white"}}/>
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-               </>
-              }
-              {index === 1 && 
-                <>
-                  <ListItemButton onClick={handleToggle} ref={anchorRef} aria-controls={open ? 'composition-menu' : undefined}
-                  aria-expanded={open ? 'true' : undefined} aria-haspopup="true">
-                    <ListItemIcon>
-                      <NoteAltIcon style={{fontSize: "40px", color: "white"}}/>
-                    </ListItemIcon>                    
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </>
-              }
-              {index === 2 && 
-                <>
-                  <ListItemButton onClick={(e) => {e.preventDefault(); window.location.href='#';}}>
-                    <ListItemIcon>
-                      <AssignmentIcon style={{fontSize: "40px", color: "white"}}/>
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </>
-              }
-                <Popper
-                  open={openPop}
-                  anchorEl={anchorRef.current}
-                  role={undefined}
-                  placement="bottom"
-                  transition
-                  disablePortal
-                >
-                  {({ TransitionProps, placement }) => (
-                  <Grow
-                    {...TransitionProps}
-                    style={{
-                      transformOrigin:
-                        placement === 'bottom' ? 'left top' : 'left bottom',
-                    }}
-                  >
-                    <Paper>
-                      <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList
-                          autoFocusItem={open}
-                          id="composition-menu"
-                          aria-labelledby="composition-button"
-                          onKeyDown={handleListKeyDown}
+    <ClickAwayListener onClickAway={handleDrawerClose}>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+          <AppBar position="fixed" open={open} sx={{ background: 'green'}}>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{ mr: 2, ...(open && { display: 'none' }) }}
+              >
+                <MenuIcon sx={{color: "white", fontSize: "40px"}}/>
+              </IconButton>
+              <Typography variant="h6" noWrap component="div">
+                ONG Amigos dos Animais
+              </Typography>
+            </Toolbar>
+          </AppBar>
+            <Drawer
+              sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                  width: drawerWidth,
+                  boxSizing: 'border-box',
+                  background: 'green'
+                },
+              }}
+              variant="persistent"
+              anchor="left"
+              open={open}
+            >
+              <DrawerHeader>            
+                <IconButton onClick={handleDrawerClose}>
+                    <MenuIcon sx={{fontSize: "40px", color: "white"}}/>
+                {/*theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />*/}
+                </IconButton>        
+              </DrawerHeader>
+              <Divider />
+              <List>
+                {['Home', 'Cadastros', 'Relatórios' ].map((text, index) => (
+                  <ListItem key={text} disablePadding sx={{marginBottom: "40px", color: "white"}}>
+                    {index === 0 && 
+                    <>
+                        <ListItemButton onClick={(e) => {e.preventDefault(); window.location.href='/';}}>
+                          <ListItemIcon>
+                            <HomeIcon style={{fontSize: "40px", color: "white"}}/>
+                          </ListItemIcon>
+                          <ListItemText primary={text} />
+                        </ListItemButton>
+                    </>
+                    }
+                    {index === 1 && 
+                      <>
+                        <ListItemButton onClick={handleToggle} ref={anchorRef} aria-controls={open ? 'composition-menu' : undefined}
+                        aria-expanded={open ? 'true' : undefined} aria-haspopup="true">
+                          <ListItemIcon>
+                            <NoteAltIcon style={{fontSize: "40px", color: "white"}}/>
+                          </ListItemIcon>                    
+                          <ListItemText primary={text} />
+                        </ListItemButton>
+                      </>
+                    }
+                    {index === 2 && 
+                      <>
+                        <ListItemButton onClick={(e) => {e.preventDefault(); window.location.href='#';}}>
+                          <ListItemIcon>
+                            <AssignmentIcon style={{fontSize: "40px", color: "white"}}/>
+                          </ListItemIcon>
+                          <ListItemText primary={text} />
+                        </ListItemButton>
+                      </>
+                    }
+                      <Popper
+                        open={openPop}
+                        anchorEl={anchorRef.current}
+                        role={undefined}
+                        placement="bottom"
+                        transition
+                        disablePortal
+                      >
+                        {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          style={{
+                            transformOrigin:
+                              placement === 'bottom' ? 'left top' : 'left bottom',
+                          }}
                         >
-                          <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='userregister';}}>Cadastro de Usuário</MenuItem>
-                          <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='attendanceregister';}}>Cadastro de Atendimento</MenuItem>
-                        </MenuList>
-                      </ClickAwayListener>
-                    </Paper>
-                  </Grow>
-                )}
-              </Popper>              
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      {/*
-      <Main open={open}>
+                          <Paper>
+                            <ClickAwayListener onClickAway={handleClose}>
+                              <MenuList
+                                autoFocusItem={open}
+                                id="composition-menu"
+                                aria-labelledby="composition-button"
+                                onKeyDown={handleListKeyDown}
+                              >
+                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='userregister';}}>Cadastro de Usuário</MenuItem>
+                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='attendanceregister';}}>Cadastro de Atendimento</MenuItem>
+                              </MenuList>
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>              
+                  </ListItem>
+                ))}
+              </List>
+            </Drawer>
+        {/*
+        <Main open={open}>
         <DrawerHeader />
         
-      </Main>
+        </Main>
       */}      
-    </Box>
+      </Box>
+    </ClickAwayListener>
   );
 }
 

@@ -26,20 +26,20 @@ export default function AttendanceRegister() {
               variant="standards"
             />
           </Grid>          
-            <Grid item xs={12} sm={6} lg={5.5}>
-              <TextField
-                required
-                id="lastName"
-                name="lastName"
-                label="Detalhes do atendimento"
-                fullWidth  
-                autoComplete="family-name"
-                variant="outlined"
-                multiline
-                rows={10}
-              />
-            </Grid>
+          <Grid item xs={12} sm={6} lg={5.5}>
+            <TextField
+              required
+              id="lastName"
+              name="lastName"
+              label="Detalhes do atendimento"
+              fullWidth  
+              autoComplete="family-name"
+              variant="outlined"
+              multiline
+              rows={10}
+            />
           </Grid>
+        </Grid>
         <Grid item xs={12} sx={{ marginTop: '20px' }}>
           <TextField
             required
@@ -51,17 +51,17 @@ export default function AttendanceRegister() {
             variant="standard"
             type="date"
           />
-        </Grid>        
+        </Grid>     
         <Grid item xs={12}>
-            <TextField
-                required
-                id="lastName"
-                name="lastName"
-                label="Hora do atendimento"                
-                autoComplete="family-name"
-                variant="standard"
-                type="time"
-            />
+          <TextField
+            required
+            id="lastName"
+            name="lastName"
+            label="Hora do atendimento"                
+            autoComplete="family-name"
+            variant="standard"
+            type="time"
+          />
         </Grid>
         <Grid item xs={12} sm={6} lg={6.5} sx={{ marginTop: '20px' }}>
           <TextField            
