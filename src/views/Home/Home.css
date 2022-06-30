@@ -1,5 +1,5 @@
 /* Font */
-@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700");
 
 /* Design */
 *,
@@ -14,35 +14,36 @@ html {
 
 body {
   color: #272727;
-  font-family: 'Quicksand', serif;
+  font-family: "Quicksand", serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
   padding: 1rem;
 }
 
-.main { 
+.main {
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .main-title {
-    margin-top: 70px;
-    font-size: 30px;
+  margin-top: 70px;
+  font-size: 30px;
 }
 
 .main-subtitle {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 50%;
 }
 
 .card_image {
-    background: #E7EFE6;
-    height: auto;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  background: #e7efe6;
+  height: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 img {
@@ -76,12 +77,12 @@ img {
 
 @media (min-width: 56rem) {
   .cards_item {
-    width: 25%
+    width: 25%;
   }
 }
 
 .card {
-  background-color: #E7EFE6;
+  background-color: #e7efe6;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -91,7 +92,7 @@ img {
 
 .card_content {
   padding: 1rem;
-  background: #E7EFE6;
+  background: #e7efe6;
 }
 
 .card_title {
@@ -107,6 +108,6 @@ img {
   color: #000000;
   font-size: 0.875rem;
   line-height: 1.5;
-  margin-bottom: 1.25rem;    
+  margin-bottom: 1.25rem;
   font-weight: 400;
 }
