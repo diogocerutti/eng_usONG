@@ -30,7 +30,7 @@ export default function AttendanceRegister() {
               label="Descrição"
               fullWidth
               autoComplete="given-name"
-              variant="standard"
+              variant="standards"
             />
           </Grid>
           <Grid item sx={{ marginTop: "30px" }}>
