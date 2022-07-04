@@ -10,7 +10,7 @@ export default function AttendanceRegister() {
   return (
     <React.Fragment>
       <Grid
-        container
+        container item
         lg={9}
         sx={{
           border: 1,
@@ -18,7 +18,7 @@ export default function AttendanceRegister() {
           padding: "20px",
         }}
       >
-        <Grid item lg={6} sx={12}>
+        <Grid item lg={6} xs={12}>
           <Typography variant="h6" gutterBottom>
             Cadastro de Atendimento
           </Typography>
@@ -30,7 +30,7 @@ export default function AttendanceRegister() {
               label="Descrição"
               fullWidth
               autoComplete="given-name"
-              variant="standards"
+              variant="standard"
             />
           </Grid>
           <Grid item sx={{ marginTop: "30px" }}>

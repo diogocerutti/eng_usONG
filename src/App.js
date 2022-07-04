@@ -7,6 +7,7 @@ import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import UserRegister from "./views/UserRegister/UserRegister";
 import AttendanceRegister from "./views/AttendanceRegister/AttendanceRegister";
+import LoginError from "./views/LoginError/LoginError";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/userregister" element={<UserRegister />} />
           <Route path="/attendanceregister" element={<AttendanceRegister />} />
+          <Route path="/login/error" element={<LoginError />} />
         </Routes>
       </div>
     </Router>

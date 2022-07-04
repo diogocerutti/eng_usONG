@@ -22,6 +22,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import MenuIcon from '@mui/icons-material/Menu';
+import PersonIcon from '@mui/icons-material/Person';
+import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
+import PetsIcon from '@mui/icons-material/Pets';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
@@ -140,6 +143,7 @@ const Header = () => {
               <Typography variant="h6" noWrap component="div">
                 ONG Amigos dos Animais
               </Typography>
+              <PetsIcon sx={{marginLeft:'10px'}}/>
             </Toolbar>
           </AppBar>
             <Drawer
@@ -221,8 +225,11 @@ const Header = () => {
                                 aria-labelledby="composition-button"
                                 onKeyDown={handleListKeyDown}
                               >
-                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='userregister';}}>Cadastro de Usuário</MenuItem>
-                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='attendanceregister';}}>Cadastro de Atendimento</MenuItem>
+                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='userregister';}}><PersonIcon/>Cadastro de Usuário</MenuItem>
+                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='attendanceregister';}}><HeadsetMicIcon/>Cadastro de Atendimento</MenuItem>
+                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='';}}><i class="fa-solid fa-dog"></i>Cadastro de Animais</MenuItem>
+                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='';}}><i class="fa-solid fa-paw"></i>Cadastro de Espécies</MenuItem>
+                                <MenuItem onClick={(e) => {e.preventDefault(); window.location.href='';}}><i class="fa-solid fa-shield-dog"></i>Cadastro de Raças</MenuItem>
                               </MenuList>
                             </ClickAwayListener>
                           </Paper>
