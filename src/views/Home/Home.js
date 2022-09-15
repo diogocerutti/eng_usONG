@@ -33,110 +33,120 @@ export default function Home() {
         aria-describedby="modal-modal-description"
         BackdropProps={{ style: { backgroundColor: 'transparent' } }}
       >
-        <Grid
-          container
-          lg={9}
-          sx={{
-            border: 1,
-            marginTop: '70px',
-            padding: '20px',
-            background: '#E7EFE6'
-          }}
-        >
-          <Grid item lg={6} sx={12}>
-            <Grid
-              item
-              lg={8}
-              sx={{
-                display: 'flex',
-                alignItems: 'baseline',
-                marginBottom: '20px'
-              }}
-            >
-              <TextField
-                required
-                id="firstName"
-                name="firstName"
-                label="Animal"
-                fullWidth
-                autoComplete="given-name"
-                variant="standard"
-              />
-              <SearchIcon />
+        <Grid container justifyContent={'center'}>
+          <Grid
+            container
+            lg={9}
+            sx={{
+              border: 1,
+              marginTop: '70px',
+              padding: '20px',
+              background: '#E7EFE6'
+            }}
+          >
+            <Grid item lg={6} sx={12}>
+              <Grid
+                item
+                lg={8}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  marginBottom: '20px'
+                }}
+              >
+                <TextField
+                  required
+                  id="firstName"
+                  name="firstName"
+                  label="Animal"
+                  fullWidth
+                  autoComplete="given-name"
+                  variant="standard"
+                />
+                <SearchIcon />
+              </Grid>
+              <Grid item sx={{ marginTop: '30px' }}>
+                <TextField
+                  required
+                  id="address1"
+                  name="address1"
+                  label="Data Inicial do Atendimento"
+                  InputLabelProps={{ shrink: true }}
+                  autoComplete="shipping address-line1"
+                  variant="standard"
+                  type="date"
+                />
+              </Grid>
+              <Grid item sx={{ marginTop: '30px' }}>
+                <TextField
+                  required
+                  id="address1"
+                  name="address1"
+                  label="Data Final do Atendimento"
+                  InputLabelProps={{ shrink: true }}
+                  autoComplete="shipping address-line1"
+                  variant="standard"
+                  type="date"
+                />
+              </Grid>
             </Grid>
-            <Grid item sx={{ marginTop: '30px' }}>
-              <TextField
-                required
-                id="address1"
-                name="address1"
-                label="Data Inicial do Atendimento"
-                InputLabelProps={{ shrink: true }}
-                autoComplete="shipping address-line1"
-                variant="standard"
-                type="date"
-              />
+            <Grid item lg={6} sx={12}>
+              <Grid
+                item
+                lg={8}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  marginBottom: '20px'
+                }}
+              >
+                <TextField
+                  required
+                  id="firstName"
+                  name="firstName"
+                  label="Espécie"
+                  fullWidth
+                  autoComplete="given-name"
+                  variant="standard"
+                />
+                <SearchIcon />
+              </Grid>
+              <Grid
+                item
+                lg={8}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  marginBottom: '20px'
+                }}
+              >
+                <TextField
+                  required
+                  id="firstName"
+                  name="firstName"
+                  label="Raça"
+                  fullWidth
+                  autoComplete="given-name"
+                  variant="standard"
+                />
+                <SearchIcon />
+              </Grid>
+              <Button
+                variant="contained"
+                color="success"
+                sx={{ marginRight: '20%' }}
+              >
+                Filtrar
+              </Button>
+              <Button
+                variant="contained"
+                color="warning"
+                sx={{ marginRight: '20%' }}
+                onClick={handleClose}
+              >
+                Cancelar
+              </Button>
             </Grid>
-            <Grid item sx={{ marginTop: '30px' }}>
-              <TextField
-                required
-                id="address1"
-                name="address1"
-                label="Data Final do Atendimento"
-                InputLabelProps={{ shrink: true }}
-                autoComplete="shipping address-line1"
-                variant="standard"
-                type="date"
-              />
-            </Grid>
-          </Grid>
-          <Grid item lg={6} sx={12}>
-            <Grid
-              item
-              lg={8}
-              sx={{
-                display: 'flex',
-                alignItems: 'baseline',
-                marginBottom: '20px'
-              }}
-            >
-              <TextField
-                required
-                id="firstName"
-                name="firstName"
-                label="Espécie"
-                fullWidth
-                autoComplete="given-name"
-                variant="standard"
-              />
-              <SearchIcon />
-            </Grid>
-            <Grid
-              item
-              lg={8}
-              sx={{
-                display: 'flex',
-                alignItems: 'baseline',
-                marginBottom: '20px'
-              }}
-            >
-              <TextField
-                required
-                id="firstName"
-                name="firstName"
-                label="Raça"
-                fullWidth
-                autoComplete="given-name"
-                variant="standard"
-              />
-              <SearchIcon />
-            </Grid>
-            <Button
-              variant="contained"
-              color="success"
-              sx={{ marginRight: '20%' }}
-            >
-              Filtrar
-            </Button>
           </Grid>
         </Grid>
       </Modal>
