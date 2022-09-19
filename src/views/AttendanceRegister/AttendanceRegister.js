@@ -1,21 +1,21 @@
-import * as React from "react";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import Checkbox from "@mui/material/Checkbox";
+import * as React from 'react'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import TextField from '@mui/material/TextField'
+import { Button } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
+import Checkbox from '@mui/material/Checkbox'
 
 export default function AttendanceRegister() {
   return (
     <React.Fragment>
       <Grid
-        container item
+        container
+        item
         lg={9}
         sx={{
           border: 1,
-          marginTop: "70px",
-          padding: "20px",
+          padding: '20px'
         }}
       >
         <Grid item lg={6} xs={12}>
@@ -33,7 +33,7 @@ export default function AttendanceRegister() {
               variant="standard"
             />
           </Grid>
-          <Grid item sx={{ marginTop: "30px" }}>
+          <Grid item sx={{ marginTop: '30px' }}>
             <TextField
               required
               id="address1"
@@ -45,7 +45,7 @@ export default function AttendanceRegister() {
               type="date"
             />
           </Grid>
-          <Grid item lg={4} sx={{ marginTop: "10px" }}>
+          <Grid item lg={4} sx={{ marginTop: '10px' }}>
             <TextField
               required
               id="lastName"
@@ -57,10 +57,10 @@ export default function AttendanceRegister() {
               fullWidth
             />
           </Grid>
-          <Grid item sx={{ marginTop: "30px" }}>
+          <Grid item sx={{ marginTop: '30px' }}>
             <TextField variant="outlined" type="file" />
           </Grid>
-          <Grid item sx={{ marginTop: "20px" }}>
+          <Grid item sx={{ marginTop: '20px' }}>
             <Typography variant="caption" display="block" gutterBottom>
               * Campos Obrigatórios
             </Typography>
@@ -71,9 +71,9 @@ export default function AttendanceRegister() {
             item
             lg={8}
             sx={{
-              display: "flex",
-              alignItems: "baseline",
-              marginBottom: "20px",
+              display: 'flex',
+              alignItems: 'baseline',
+              marginBottom: '20px'
             }}
           >
             <TextField
@@ -102,11 +102,11 @@ export default function AttendanceRegister() {
             multiline
             rows={6}
           />
-          <Grid item sx={{ marginTop: "20px" }} textAlign="center">
+          <Grid item sx={{ marginTop: '20px' }} textAlign="center">
             <Button
               variant="contained"
               color="success"
-              sx={{ marginRight: "20%" }}
+              sx={{ marginRight: '20%' }}
             >
               Salvar
             </Button>
@@ -117,5 +117,5 @@ export default function AttendanceRegister() {
         </Grid>
       </Grid>
     </React.Fragment>
-  );
+  )
 }

@@ -1,4 +1,5 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
+import { api } from '../../helpers/api'
 import './Home.css'
 import SearchIcon from '@mui/icons-material/Search'
 import Button from '@mui/material/Button'
@@ -7,15 +8,25 @@ import TextField from '@mui/material/TextField'
 import Modal from '@mui/material/Modal'
 
 export default function Home() {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const [animals, setAnimals] = useState([])
+
+  useEffect(() => {
+    const getAnimals = async () => {
+      let animalList = await api.getAll('/animal')
+      setAnimals(animalList)
+    }
+    getAnimals()
+  }, [])
 
   return (
     <div className="main">
       <h1 className="main-title">Bem-vindo (a)</h1>
       <Grid container>
-        <h2 className="main-subtitle">Últimos atendimentos cadastrados:</h2>
+        <h2 className="main-subtitle">Animais cadastrados:</h2>
         <Grid item>
           <Button
             onClick={handleOpen}
@@ -44,7 +55,7 @@ export default function Home() {
               background: '#E7EFE6'
             }}
           >
-            <Grid item lg={6} sx={12}>
+            <Grid item lg={6} xs={12}>
               <Grid
                 item
                 lg={8}
@@ -151,80 +162,20 @@ export default function Home() {
         </Grid>
       </Modal>
       <ul className="cards">
-        <li className="cards_item">
-          <div className="card">
-            <div className="card_image">
-              <img alt="Ilustração" src="https://placedog.net/1000/563?id=51" />
+        {animals.map((i) => (
+          <li key={i.animal_id} className="cards_item">
+            <div className="card">
+              <div className="card_image">
+                <img alt="Imagem" src="https://placedog.net/1000/563?id=51" />
+              </div>
+              <div className="card_content">
+                <h2 className="card_title">{i.nickname}</h2>
+                <p className="card_text">{i.description}</p>
+                <p className="card_text">Custos: {i.outgoing}</p>
+              </div>
             </div>
-            <div className="card_content">
-              <h2 className="card_title">Buldogue</h2>
-              <p className="card_text">Descrição: Resgate Vira-Lata</p>
-              <p className="card_text">Local: Bairro XXX</p>
-              <p className="card_text">Status: em andamento</p>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item">
-          <div className="card">
-            <div className="card_image">
-              <img alt="Ilustração" src="https://placedog.net/samples/5.jpg" />
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Husky</h2>
-              <p className="card_text">
-                Descrição: Coleta do Veterinário - Caso 25
-              </p>
-              <p className="card_text">Local: Bairro XXX</p>
-              <p className="card_text">Status: Finalizado a 20 minutos</p>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item">
-          <div className="card">
-            <div className="card_image">
-              <img alt="Ilustração" src="https://placedog.net/samples/3.jpg" />
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Golden</h2>
-              <p className="card_text">Descrição: </p>
-              <p className="card_text">Local: </p>
-              <p className="card_text">Status: </p>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item">
-          <div className="card">
-            <div className="card_image">
-              <img alt="Ilustração" src="https://placedog.net/samples/16.jpg" />
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Lilica</h2>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item">
-          <div className="card">
-            <div className="card_image">
-              <img
-                alt="Ilustração"
-                src="https://picsum.photos/id/237/536/354"
-              />
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Tóbi</h2>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item">
-          <div className="card">
-            <div className="card_image">
-              <img alt="Ilustração" src="https://placedog.net/samples/53.jpg" />
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Avistado</h2>
-            </div>
-          </div>
-        </li>
+          </li>
+        ))}
       </ul>
     </div>
   )
