@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { LoginRoute } from '../../helpers/routes/user'
+import { authValidation } from '../../authValidation'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import {
@@ -46,6 +47,10 @@ export default function Login() {
     })
   }*/
 
+  useEffect(() => {
+    authValidation()
+  })
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -58,9 +63,10 @@ export default function Login() {
       console.log(json.errors)
       json.errors.map((i) => alert(i.message))
     } else {
-      console.log('LOGADO')
+      alert('Logado')
       console.log(json)
-      /*window.location.href = '/'*/
+      localStorage.setItem('token', json.token)
+      window.location.href = '/'
     }
   }
 
@@ -88,6 +94,7 @@ export default function Login() {
             onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
+            autoComplete="off"
           >
             <TextField
               margin="normal"

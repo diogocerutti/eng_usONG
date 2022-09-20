@@ -26,7 +26,9 @@ import {
   Paper,
   Popper,
   MenuItem,
-  MenuList
+  MenuList,
+  Grid,
+  Button
 } from '@mui/material'
 
 const drawerWidth = 240
@@ -119,6 +121,19 @@ const Header = () => {
               ONG Amigos dos Animais
             </Typography>
             <PetsIcon sx={{ marginLeft: '10px' }} />
+            <Grid
+              item
+              sx={{
+                border: 1,
+                borderRadius: 1,
+                right: 10,
+                position: 'absolute'
+              }}
+            >
+              <Button>
+                <Typography sx={{ color: 'white' }}>Sair</Typography>
+              </Button>
+            </Grid>
           </Toolbar>
         </AppBar>
         <Drawer
