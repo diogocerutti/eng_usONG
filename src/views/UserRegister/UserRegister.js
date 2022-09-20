@@ -48,9 +48,6 @@ export default function UserRegister() {
               type="text"
             />
           </Grid>
-          <Grid item xs={12} lg={12} sx={{ marginTop: '20px' }}>
-            <TextField variant="outlined" type="file" />
-          </Grid>
           <Grid item sx={{ marginTop: '20px' }}>
             <Typography variant="caption" display="block" gutterBottom>
               * Campos Obrigatórios
@@ -98,13 +95,6 @@ export default function UserRegister() {
             <Button variant="contained" color="warning">
               Redefinir Senha
             </Button>
-          </Grid>
-          <Grid item sx={{ marginTop: '20px' }}>
-            <Typography variant="caption" display="block" gutterBottom>
-              OBS: A primeira senha do usuário será o seu CPF. Após fazer login
-              pela primeira vez, é necessário efetuar a troca da mesma. Ao
-              redefinir uma senha ela volta a ser o CPF do usuário.
-            </Typography>
           </Grid>
           <Grid
             item

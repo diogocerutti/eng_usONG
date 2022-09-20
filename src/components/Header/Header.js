@@ -104,8 +104,11 @@ const Header = () => {
 
   return (
     <ClickAwayListener onClickAway={handleDrawerClose}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
+      <Box
+        sx={{
+          display: 'flex'
+        }}
+      >
         <AppBar position="fixed" open={open} sx={{ background: 'green' }}>
           <Toolbar>
             <IconButton
