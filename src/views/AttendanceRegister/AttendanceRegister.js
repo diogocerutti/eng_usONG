@@ -1,108 +1,142 @@
-import * as React from 'react'
-import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import { Button } from '@mui/material'
+import {
+  Button,
+  Grid,
+  Typography,
+  TextField,
+  Container,
+  Stack,
+  Select,
+  MenuItem
+} from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import Checkbox from '@mui/material/Checkbox'
 
 export default function AttendanceRegister() {
   return (
-    <React.Fragment>
-      <Grid
-        container
-        item
-        lg={9}
-        sx={{
-          border: 1,
-          padding: '20px'
-        }}
-      >
-        <Grid item lg={6} xs={12}>
+    <Container
+      maxWidth={'lg'}
+      sx={{ display: 'flex', justifyContent: 'center' }}
+    >
+      <Stack component="form" autoComplete="off" width="50%" spacing={3}>
+        <Grid item lg={12} xs={12}>
           <Typography variant="h6" gutterBottom>
             Cadastro de Atendimento
           </Typography>
-          <Grid item lg={8}>
+        </Grid>
+        <Grid item lg={12} justifyContent={'space-between'} display="flex">
+          <Grid
+            item
+            justifyContent={'space-between'}
+            display="flex"
+            alignItems={'baseline'}
+            width="45%"
+          >
             <TextField
               required
-              id="firstName"
-              name="firstName"
-              label="Descrição"
+              name="user"
+              label="Usuário"
               fullWidth
-              autoComplete="given-name"
               variant="standard"
             />
+            <SearchIcon />
           </Grid>
-          <Grid item sx={{ marginTop: '30px' }}>
+          <Grid
+            item
+            justifyContent={'space-between'}
+            display="flex"
+            alignItems={'baseline'}
+            width="45%"
+          >
             <TextField
               required
-              id="address1"
-              name="address1"
+              name="animal"
+              label="Animal"
+              fullWidth
+              variant="standard"
+            />
+            <SearchIcon />
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          lg={12}
+          justifyContent={'space-between'}
+          alignItems={'baseline'}
+          display="flex"
+        >
+          <Grid item>
+            <Select
+              name="typeDropdown"
+              label="Tipo de atendimento"
+              sx={{ minWidth: 237 }}
+            >
+              <MenuItem key="option0" value="option0">
+                Algo
+              </MenuItem>
+            </Select>
+          </Grid>
+          <Grid item sx={{ minWidth: 237, width: '45%' }}>
+            <TextField
+              required
+              name="cost"
+              label="Custo"
+              variant="standard"
+              type="number"
+              placeholder="R$"
+              fullWidth
+            />
+          </Grid>
+        </Grid>
+
+        <Grid
+          item
+          lg={12}
+          justifyContent={'space-between'}
+          alignItems={'baseline'}
+          display="flex"
+        >
+          <Grid item sx={{ width: '43%' }}>
+            <TextField
+              required
+              name="date"
               label="Data do atendimento"
               InputLabelProps={{ shrink: true }}
-              autoComplete="shipping address-line1"
               variant="standard"
               type="date"
+              fullWidth
             />
           </Grid>
-          <Grid item lg={4} sx={{ marginTop: '10px' }}>
+          <Grid item sx={{ width: '45%' }}>
             <TextField
-              required
-              id="lastName"
-              name="lastName"
+              name="time"
               label="Hora do atendimento"
-              autoComplete="family-name"
               variant="standard"
               type="time"
               fullWidth
             />
           </Grid>
-          <Grid item sx={{ marginTop: '30px' }}>
-            <TextField variant="outlined" type="file" />
-          </Grid>
-          <Grid item sx={{ marginTop: '20px' }}>
-            <Typography variant="caption" display="block" gutterBottom>
-              * Campos Obrigatórios
-            </Typography>
-          </Grid>
         </Grid>
-        <Grid item lg={6} xs={12}>
-          <Grid
-            item
-            lg={8}
-            sx={{
-              display: 'flex',
-              alignItems: 'baseline',
-              marginBottom: '20px'
-            }}
-          >
-            <TextField
-              required
-              id="firstName"
-              name="firstName"
-              label="Animal"
-              fullWidth
-              autoComplete="given-name"
-              variant="standard"
-            />
-            <SearchIcon />
-          </Grid>
-          <Typography variant="h9" gutterBottom>
-            Liberar Atendimento sem Animal Vinculado?
-          </Typography>
-          <Checkbox color="secondary" name="saveAddress" value="yes" />
+
+        <Grid item xs={12} lg={12} width="75%" alignSelf="center">
           <TextField
             required
-            id="lastName"
-            name="lastName"
+            name="details"
             label="Detalhes do atendimento"
             fullWidth
-            autoComplete="family-name"
             variant="outlined"
             multiline
-            rows={6}
+            rows={3}
           />
-          <Grid item sx={{ marginTop: '20px' }} textAlign="center">
+        </Grid>
+
+        <Grid
+          item
+          lg={12}
+          justifyContent={'space-evenly'}
+          alignItems={'baseline'}
+          display="flex"
+        >
+          <Grid item>
             <Button
               variant="contained"
               color="success"
@@ -110,12 +144,19 @@ export default function AttendanceRegister() {
             >
               Salvar
             </Button>
+          </Grid>
+          <Grid item>
             <Button variant="contained" color="error">
               Cancelar
             </Button>
           </Grid>
         </Grid>
-      </Grid>
-    </React.Fragment>
+        <Grid item lg={12} xs={12}>
+          <Typography variant="caption" display="block" gutterBottom>
+            * Campos Obrigatórios
+          </Typography>
+        </Grid>
+      </Stack>
+    </Container>
   )
 }

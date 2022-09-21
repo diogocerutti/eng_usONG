@@ -1,121 +1,117 @@
-import * as React from 'react'
-import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import Checkbox from '@mui/material/Checkbox'
-import { Button } from '@mui/material'
+import {
+  Button,
+  Typography,
+  TextField,
+  Checkbox,
+  Container,
+  Stack,
+  Grid
+} from '@mui/material'
 
 export default function UserRegister() {
   return (
-    <React.Fragment>
-      <Grid container lg={8} sx={{ border: 1, padding: '20px' }}>
-        <Grid item lg={6}>
-          <Typography variant="h6" gutterBottom>
+    <Container maxWidth={'lg'}>
+      <Stack
+        flexDirection={'row'}
+        justifyContent={'space-between'}
+        alignItems={'baseline'}
+        direction={{ xs: 'column', sm: 'row', lg: 'column' }}
+        spacing={{ xs: 1, sm: 2, md: 4, lg: 0 }}
+      >
+        <Stack
+          width={{ xs: '100%', sm: '100%', md: '100%', lg: '50%' }}
+          alignSelf={{ lg: 'center' }}
+        >
+          <Typography variant="h4" gutterBottom>
             Cadastro de Usuário
           </Typography>
-          <Grid item xs={12} lg={8}>
-            <TextField
-              required
-              id="firstName"
-              name="firstName"
-              label="Nome do usuário"
-              fullWidth
-              autoComplete="given-name"
-              variant="standard"
-            />
-          </Grid>
-          <Grid item xs={12} sx={{ marginTop: '20px' }}>
-            <TextField
-              required
-              id="address1"
-              name="address1"
-              label="Data de nascimento"
-              InputLabelProps={{ shrink: true }}
-              autoComplete="shipping address-line1"
-              variant="standard"
-              type="date"
-            />
-          </Grid>
-          <Grid item xs={12} lg={6.5}>
-            <TextField
-              required
-              id="address2"
-              name="address2"
-              label="CPF"
-              size="medium"
-              autoComplete="shipping address-line2"
-              variant="standard"
-              type="text"
-            />
-          </Grid>
-          <Grid item sx={{ marginTop: '20px' }}>
-            <Typography variant="caption" display="block" gutterBottom>
-              * Campos Obrigatórios
-            </Typography>
-          </Grid>
-        </Grid>
+          <Typography variant="h6" display="block" gutterBottom>
+            * Campos Obrigatórios
+          </Typography>
+        </Stack>
+        <Stack
+          component="form"
+          autoComplete="off"
+          width={{ xs: '100%', sm: '100%', md: '100%', lg: '50%' }}
+          alignSelf={{ lg: 'center' }}
+          spacing={2}
+        >
+          <TextField
+            required
+            name="name"
+            label="Nome do usuário"
+            fullWidth
+            variant="standard"
+            type="text"
+          />
 
-        <Grid item lg={6}>
-          <Grid item xs={12} lg={8}>
-            <TextField
-              required
-              id="lastName"
-              name="lastName"
-              label="Login do usuário"
-              fullWidth
-              autoComplete="family-name"
-              variant="standard"
-            />
-          </Grid>
+          <TextField
+            required
+            name="login"
+            label="Login do usuário"
+            fullWidth
+            variant="standard"
+            type="text"
+          />
 
-          <Grid item xs={12} lg={8}>
-            <TextField
-              required
-              id="state"
-              name="state"
-              label="E-mail"
-              variant="standard"
-              type="email"
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12} lg={8} sx={{ marginTop: '20px' }}>
-            <Typography variant="h9" gutterBottom>
-              Acesso Liberado? *
-            </Typography>
-            <Checkbox color="secondary" name="saveAddress" value="yes" />
-          </Grid>
+          <TextField
+            required
+            name="cpf"
+            label="CPF"
+            variant="standard"
+            type="text"
+          />
+
+          <TextField
+            required
+            name="email"
+            label="E-mail"
+            variant="standard"
+            type="email"
+            fullWidth
+          />
+
+          <TextField
+            required
+            name="date"
+            label="Data de nascimento"
+            InputLabelProps={{ shrink: true }}
+            variant="standard"
+            type="date"
+          />
           <Grid
             item
-            xs={12}
             lg={12}
-            sx={{ marginTop: '20px' }}
-            textAlign="center"
+            justifyContent={{
+              xs: 'space-evenly',
+              sm: 'space-evenly',
+              md: 'space-evenly',
+              lg: 'space-between'
+            }}
+            alignItems={'baseline'}
+            display="flex"
           >
-            <Button variant="contained" color="warning">
-              Redefinir Senha
-            </Button>
+            <Grid item>
+              <Typography variant="h9" gutterBottom>
+                Acesso Liberado? *
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Checkbox color="secondary" name="acess" value="yes" />
+            </Grid>
+            <Grid item>
+              <Button variant="contained" color="success">
+                Salvar
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button variant="contained" color="error">
+                Cancelar
+              </Button>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={12}
-            sx={{ marginTop: '20px' }}
-            textAlign="center"
-          >
-            <Button
-              variant="contained"
-              color="success"
-              sx={{ marginRight: '30%' }}
-            >
-              Salvar
-            </Button>
-            <Button variant="contained" color="error">
-              Cancelar
-            </Button>
-          </Grid>
-        </Grid>
-      </Grid>
-    </React.Fragment>
+        </Stack>
+      </Stack>
+    </Container>
   )
 }

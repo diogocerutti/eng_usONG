@@ -11,7 +11,6 @@ import {
   styled,
   Box,
   Drawer,
-  CssBaseline,
   Toolbar,
   List,
   Typography,
