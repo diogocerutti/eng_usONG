@@ -8,8 +8,10 @@ import Login from './views/Login/Login'
 import UserRegister from './views/UserRegister/UserRegister'
 import AttendanceRegister from './views/AttendanceRegister/AttendanceRegister'
 import AnimalRegister from './views/AnimalRegister'
+import BreedRegister from './views/BreedRegister'
+import SpecieRegister from './views/SpecieRegister'
 import LoginError from './views/LoginError/LoginError'
-import Teste from './views/Teste/index'
+import Breeds from './views/Breeds'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
 import { defaultTheme } from './global/styles/theme'
@@ -30,8 +32,10 @@ export default function App() {
               element={<AttendanceRegister />}
             />
             <Route path="/animalregister" element={<AnimalRegister />} />
+            <Route path="/breedregister" element={<BreedRegister />} />
+            <Route path="/specieregister" element={<SpecieRegister />} />
             <Route path="/login/error" element={<LoginError />} />
-            <Route path="/teste" element={<Teste />} />
+            <Route path="/breeds" element={<Breeds />} />
           </Routes>
         </Grid>
       </Router>

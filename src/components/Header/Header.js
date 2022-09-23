@@ -61,7 +61,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const Header = () => {
   const [open, setOpen] = React.useState(false)
   const [openPop, setOpenPop] = React.useState(false)
+  const [openPop2, setOpenPop2] = React.useState(false)
   const anchorRef = React.useRef(null)
+  const anchorRef2 = React.useRef(null)
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -75,12 +77,24 @@ const Header = () => {
     setOpenPop((prevOpen) => !prevOpen)
   }
 
+  const handleToggle2 = () => {
+    setOpenPop2((prevOpen2) => !prevOpen2)
+  }
+
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return
     }
 
     setOpenPop(false)
+  }
+
+  const handleClose2 = (event) => {
+    if (anchorRef2.current && anchorRef2.current.contains(event.target)) {
+      return
+    }
+
+    setOpenPop2(false)
   }
 
   function handleListKeyDown(event) {
@@ -92,14 +106,28 @@ const Header = () => {
     }
   }
 
+  function handleListKeyDown2(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault()
+      setOpenPop2(false)
+    } else if (event.key === 'Escape') {
+      setOpenPop2(false)
+    }
+  }
+
   const prevOpen = React.useRef(openPop)
+  const prevOpen2 = React.useRef(openPop2)
   React.useEffect(() => {
     if (prevOpen.current === true && openPop === false) {
       anchorRef.current.focus()
     }
+    if (prevOpen2.current === true && openPop2 === false) {
+      anchorRef2.current.focus()
+    }
 
     prevOpen.current = openPop
-  }, [openPop])
+    prevOpen2.current = openPop2
+  }, [openPop, openPop2])
 
   return (
     <ClickAwayListener onClickAway={handleDrawerClose}>
@@ -203,10 +231,11 @@ const Header = () => {
                 {index === 2 && (
                   <>
                     <ListItemButton
-                      onClick={(e) => {
-                        e.preventDefault()
-                        window.location.href = '#'
-                      }}
+                      onClick={handleToggle2}
+                      ref={anchorRef2}
+                      aria-controls={open ? 'composition-menu' : undefined}
+                      aria-expanded={open ? 'true' : undefined}
+                      aria-haspopup="true"
                     >
                       <ListItemIcon>
                         <AssignmentIcon
@@ -265,25 +294,120 @@ const Header = () => {
                                 window.location.href = 'animalregister'
                               }}
                             >
-                              <i class="fa-solid fa-dog"></i>Cadastro de Animais
+                              <i
+                                class="fa-solid fa-dog"
+                                style={{ fontSize: '21px' }}
+                              ></i>
+                              Cadastro de Animal
                             </MenuItem>
                             <MenuItem
                               onClick={(e) => {
                                 e.preventDefault()
-                                window.location.href = ''
+                                window.location.href = 'specieregister'
                               }}
                             >
-                              <i class="fa-solid fa-paw"></i>Cadastro de
+                              <i
+                                class="fa-solid fa-paw"
+                                style={{ fontSize: '21px' }}
+                              ></i>
+                              Cadastro de Espécie
+                            </MenuItem>
+                            <MenuItem
+                              onClick={(e) => {
+                                e.preventDefault()
+                                window.location.href = 'breedregister'
+                              }}
+                            >
+                              <i
+                                class="fa-solid fa-shield-dog"
+                                style={{ fontSize: '21px' }}
+                              ></i>
+                              Cadastro de Raça
+                            </MenuItem>
+                          </MenuList>
+                        </ClickAwayListener>
+                      </Paper>
+                    </Grow>
+                  )}
+                </Popper>
+
+                <Popper
+                  open={openPop2}
+                  anchorEl={anchorRef2.current}
+                  role={undefined}
+                  placement="bottom"
+                  transition
+                  disablePortal
+                >
+                  {({ TransitionProps, placement }) => (
+                    <Grow
+                      {...TransitionProps}
+                      style={{
+                        transformOrigin:
+                          placement === 'bottom' ? 'left top' : 'left bottom'
+                      }}
+                    >
+                      <Paper>
+                        <ClickAwayListener onClickAway={handleClose2}>
+                          <MenuList
+                            autoFocusItem={open}
+                            id="composition-menu"
+                            aria-labelledby="composition-button"
+                            onKeyDown={handleListKeyDown2}
+                          >
+                            <MenuItem
+                              onClick={(e) => {
+                                e.preventDefault()
+                                window.location.href = '#'
+                              }}
+                            >
+                              <PersonIcon />
+                              Atendimento
+                            </MenuItem>
+                            <MenuItem
+                              onClick={(e) => {
+                                e.preventDefault()
+                                window.location.href = '#'
+                              }}
+                            >
+                              <HeadsetMicIcon />
+                              Usuários
+                            </MenuItem>
+                            <MenuItem
+                              onClick={(e) => {
+                                e.preventDefault()
+                                window.location.href = 'breeds'
+                              }}
+                            >
+                              <i
+                                class="fa-solid fa-dog"
+                                style={{ fontSize: '21px' }}
+                              ></i>
+                              Raças
+                            </MenuItem>
+                            <MenuItem
+                              onClick={(e) => {
+                                e.preventDefault()
+                                window.location.href = '#'
+                              }}
+                            >
+                              <i
+                                class="fa-solid fa-paw"
+                                style={{ fontSize: '21px' }}
+                              ></i>
                               Espécies
                             </MenuItem>
                             <MenuItem
                               onClick={(e) => {
                                 e.preventDefault()
-                                window.location.href = ''
+                                window.location.href = '#'
                               }}
                             >
-                              <i class="fa-solid fa-shield-dog"></i>Cadastro de
-                              Raças
+                              <i
+                                class="fa-solid fa-shield-dog"
+                                style={{ fontSize: '21px' }}
+                              ></i>
+                              Tipos de atendimento
                             </MenuItem>
                           </MenuList>
                         </ClickAwayListener>

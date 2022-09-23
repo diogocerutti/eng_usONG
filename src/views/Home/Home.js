@@ -2,10 +2,7 @@ import { useEffect, useState } from 'react'
 import { api } from '../../helpers/api'
 import './Home.css'
 import SearchIcon from '@mui/icons-material/Search'
-import Button from '@mui/material/Button'
-import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
-import Modal from '@mui/material/Modal'
+import { Button, Grid, TextField, Modal, Autocomplete } from '@mui/material'
 
 export default function Home() {
   const [open, setOpen] = useState(false)
@@ -22,15 +19,27 @@ export default function Home() {
     getAnimals()
   }, [])
 
+  const username = localStorage.getItem('username')
+
   return (
     <div className="main">
-      <h1 className="main-title">Bem-vindo (a)</h1>
-      <Grid container>
+      <h1 className="main-title">Bem-vindo (a) {username}</h1>
+      <Grid
+        item
+        display="flex"
+        justifyContent="space-between"
+        alignItems={'baseline'}
+      >
         <h2 className="main-subtitle">Animais cadastrados:</h2>
         <Grid item>
           <Button
             onClick={handleOpen}
-            sx={{ color: 'black', borderColor: 'black', background: '#E0DBDB' }}
+            sx={{
+              color: 'black',
+              borderColor: 'black',
+              background: '#E0DBDB',
+              fontWeight: 'bold'
+            }}
             variant="outlined"
           >
             Filtros de Busca <SearchIcon />
@@ -47,114 +56,68 @@ export default function Home() {
         <Grid container justifyContent={'center'}>
           <Grid
             container
-            lg={9}
+            item
+            lg={6}
             sx={{
               border: 1,
               marginTop: '70px',
               padding: '20px',
               background: '#E7EFE6'
             }}
+            spacing={2}
           >
-            <Grid item lg={6} xs={12}>
-              <Grid
-                item
-                lg={8}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  marginBottom: '20px'
-                }}
-              >
-                <TextField
-                  required
-                  id="firstName"
-                  name="firstName"
-                  label="Animal"
-                  fullWidth
-                  autoComplete="given-name"
-                  variant="standard"
-                />
-                <SearchIcon />
-              </Grid>
-              <Grid item sx={{ marginTop: '30px' }}>
-                <TextField
-                  required
-                  id="address1"
-                  name="address1"
-                  label="Data Inicial do Atendimento"
-                  InputLabelProps={{ shrink: true }}
-                  autoComplete="shipping address-line1"
-                  variant="standard"
-                  type="date"
-                />
-              </Grid>
-              <Grid item sx={{ marginTop: '30px' }}>
-                <TextField
-                  required
-                  id="address1"
-                  name="address1"
-                  label="Data Final do Atendimento"
-                  InputLabelProps={{ shrink: true }}
-                  autoComplete="shipping address-line1"
-                  variant="standard"
-                  type="date"
-                />
-              </Grid>
+            <Grid item lg={12}>
+              <Autocomplete
+                disablePortal
+                id="animal"
+                options={animals.map((i) => i.nickname)}
+                renderInput={(params) => (
+                  <TextField {...params} label="Animal" />
+                )}
+              ></Autocomplete>
             </Grid>
-            <Grid item lg={6} sx={12}>
-              <Grid
-                item
-                lg={8}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  marginBottom: '20px'
-                }}
-              >
-                <TextField
-                  required
-                  id="firstName"
-                  name="firstName"
-                  label="Espécie"
-                  fullWidth
-                  autoComplete="given-name"
-                  variant="standard"
-                />
-                <SearchIcon />
-              </Grid>
-              <Grid
-                item
-                lg={8}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  marginBottom: '20px'
-                }}
-              >
-                <TextField
-                  required
-                  id="firstName"
-                  name="firstName"
-                  label="Raça"
-                  fullWidth
-                  autoComplete="given-name"
-                  variant="standard"
-                />
-                <SearchIcon />
-              </Grid>
-              <Button
-                variant="contained"
-                color="success"
-                sx={{ marginRight: '20%' }}
-              >
+            <Grid item lg={12}>
+              <Autocomplete
+                disablePortal
+                id="raça"
+                options={['algo', 'algo', 'algo']}
+                renderInput={(params) => <TextField {...params} label="Raça" />}
+              ></Autocomplete>
+            </Grid>
+
+            <Grid item lg={12}>
+              <Autocomplete
+                disablePortal
+                id="espécie"
+                options={['algo', 'algo', 'algo']}
+                renderInput={(params) => (
+                  <TextField {...params} label="Espécie" />
+                )}
+              ></Autocomplete>
+            </Grid>
+
+            <Grid item lg={12}>
+              <TextField
+                required
+                name="outgoing"
+                label="Gastos"
+                fullWidth
+                variant="standard"
+                type="number"
+              />
+            </Grid>
+
+            <Grid
+              item
+              lg={12}
+              xs={12}
+              display="flex"
+              justifyContent="space-evenly"
+            >
+              <Button variant="contained" color="success">
                 Filtrar
               </Button>
-              <Button
-                variant="contained"
-                color="warning"
-                sx={{ marginRight: '20%' }}
-                onClick={handleClose}
-              >
+              <Button variant="contained" color="warning" onClick={handleClose}>
                 Cancelar
               </Button>
             </Grid>

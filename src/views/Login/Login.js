@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { LoginRoute } from '../../helpers/routes/user'
-import { authValidation } from '../../authValidation'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import {
@@ -8,10 +7,7 @@ import {
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Link,
-  Grid,
   Box,
   Typography,
   Container
@@ -47,25 +43,23 @@ export default function Login() {
     })
   }*/
 
-  useEffect(() => {
-    authValidation()
-  })
-
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     const json = await LoginRoute('/user/login', username, password)
 
-    if (json.errors) {
-      console.log(json.errors)
-      json.errors.map((i) => alert(i.message))
+    if (json.usernameOrPassword) {
+      setError(json.usernameOrPassword.error)
     } else {
-      alert('Logado')
+      setError('')
+      alert(json.message)
       console.log(json)
       localStorage.setItem('token', json.token)
+      localStorage.setItem('username', json.username)
       window.location.href = '/'
     }
   }
@@ -103,6 +97,7 @@ export default function Login() {
               id="username"
               label="Nome de usuário"
               name="Username"
+              error={error}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -114,12 +109,10 @@ export default function Login() {
               label="Senha"
               type="password"
               id="password"
+              error={error}
+              helperText={error}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Lembrar conta"
             />
             <Button
               type="submit"
@@ -129,18 +122,6 @@ export default function Login() {
             >
               Entrar
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Esqueci minha senha
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {'Criar conta'}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />

@@ -5,10 +5,9 @@ import {
   TextField,
   Container,
   Stack,
-  Select,
-  MenuItem
+  Autocomplete
 } from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search'
+import HeadsetMicIcon from '@mui/icons-material/HeadsetMic'
 
 export default function AttendanceRegister() {
   return (
@@ -17,11 +16,23 @@ export default function AttendanceRegister() {
       sx={{ display: 'flex', justifyContent: 'center' }}
     >
       <Stack component="form" autoComplete="off" width="50%" spacing={3}>
-        <Grid item lg={12} xs={12}>
-          <Typography variant="h6" gutterBottom>
-            Cadastro de Atendimento
-          </Typography>
+        <Grid
+          item
+          lg={12}
+          xs={12}
+          display="flex"
+          justifyContent={'space-between'}
+        >
+          <Grid item>
+            <Typography variant="h4" gutterBottom>
+              Cadastro de Atendimento
+            </Typography>
+          </Grid>
+          <Grid item alignSelf={'center'}>
+            <HeadsetMicIcon fontSize="large" />
+          </Grid>
         </Grid>
+
         <Grid item lg={12} justifyContent={'space-between'} display="flex">
           <Grid
             item
@@ -30,14 +41,15 @@ export default function AttendanceRegister() {
             alignItems={'baseline'}
             width="45%"
           >
-            <TextField
-              required
-              name="user"
-              label="Usuário"
+            <Autocomplete
+              disablePortal
+              id="user"
+              options={['algo', 'algo', 'algo']}
               fullWidth
-              variant="standard"
-            />
-            <SearchIcon />
+              renderInput={(params) => (
+                <TextField {...params} label="Usuário" name="user" required />
+              )}
+            ></Autocomplete>
           </Grid>
           <Grid
             item
@@ -46,34 +58,40 @@ export default function AttendanceRegister() {
             alignItems={'baseline'}
             width="45%"
           >
-            <TextField
-              required
-              name="animal"
-              label="Animal"
+            <Autocomplete
+              disablePortal
+              id="animal"
+              options={['algo', 'algo', 'algo']}
               fullWidth
-              variant="standard"
-            />
-            <SearchIcon />
+              renderInput={(params) => (
+                <TextField {...params} label="Animal" name="animal" required />
+              )}
+            ></Autocomplete>
           </Grid>
         </Grid>
 
-        <Grid
-          item
-          lg={12}
-          justifyContent={'space-between'}
-          alignItems={'baseline'}
-          display="flex"
-        >
-          <Grid item>
-            <Select
-              name="typeDropdown"
-              label="Tipo de atendimento"
-              sx={{ minWidth: 237 }}
-            >
-              <MenuItem key="option0" value="option0">
-                Algo
-              </MenuItem>
-            </Select>
+        <Grid item lg={12} justifyContent={'space-between'} display="flex">
+          <Grid
+            item
+            justifyContent={'space-between'}
+            display="flex"
+            alignItems={'baseline'}
+            width="45%"
+          >
+            <Autocomplete
+              disablePortal
+              id="type"
+              options={['algo', 'algo', 'algo']}
+              fullWidth
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Tipo de atendimento"
+                  name="type"
+                  required
+                />
+              )}
+            ></Autocomplete>
           </Grid>
           <Grid item sx={{ minWidth: 237, width: '45%' }}>
             <TextField
@@ -117,7 +135,7 @@ export default function AttendanceRegister() {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} lg={12} width="75%" alignSelf="center">
+        <Grid item xs={12} lg={12} width="100%" alignSelf="center">
           <TextField
             required
             name="details"

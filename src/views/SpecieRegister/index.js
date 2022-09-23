@@ -2,14 +2,13 @@ import {
   Button,
   Typography,
   TextField,
-  Checkbox,
   Container,
   Stack,
   Grid
 } from '@mui/material'
-import PersonIcon from '@mui/icons-material/Person'
+import PetsIcon from '@mui/icons-material/Pets'
 
-export default function UserRegister() {
+export default function SpecieRegister() {
   return (
     <Container maxWidth={'lg'}>
       <Stack
@@ -24,16 +23,11 @@ export default function UserRegister() {
           alignSelf={{ lg: 'center' }}
         >
           <Grid item display="flex" justifyContent={'space-between'}>
-            <Grid item>
-              <Typography variant="h4" gutterBottom>
-                Cadastro de Usuário
-              </Typography>
-            </Grid>
-            <Grid item alignSelf={'center'}>
-              <PersonIcon fontSize="large" />
-            </Grid>
+            <Typography variant="h4" gutterBottom>
+              Cadastro de Espécie
+            </Typography>
+            <PetsIcon fontSize="large" sx={{ alignSelf: 'center' }} />
           </Grid>
-
           <Typography variant="h6" display="block" gutterBottom>
             * Campos Obrigatórios
           </Typography>
@@ -48,7 +42,7 @@ export default function UserRegister() {
           <TextField
             required
             name="name"
-            label="Nome do usuário"
+            label="Nome da espécie"
             fullWidth
             variant="standard"
             type="text"
@@ -56,58 +50,21 @@ export default function UserRegister() {
 
           <TextField
             required
-            name="login"
-            label="Login do usuário"
+            name="description"
+            label="Descrição"
             fullWidth
-            variant="standard"
-            type="text"
+            variant="outlined"
+            multiline
+            rows={3}
           />
 
-          <TextField
-            required
-            name="cpf"
-            label="CPF"
-            variant="standard"
-            type="text"
-          />
-
-          <TextField
-            required
-            name="email"
-            label="E-mail"
-            variant="standard"
-            type="email"
-            fullWidth
-          />
-
-          <TextField
-            required
-            name="date"
-            label="Data de nascimento"
-            InputLabelProps={{ shrink: true }}
-            variant="standard"
-            type="date"
-          />
           <Grid
             item
             lg={12}
-            justifyContent={{
-              xs: 'space-evenly',
-              sm: 'space-evenly',
-              md: 'space-evenly',
-              lg: 'space-between'
-            }}
+            justifyContent={'space-evenly'}
             alignItems={'baseline'}
             display="flex"
           >
-            <Grid item>
-              <Typography variant="h9" gutterBottom>
-                Acesso Liberado? *
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Checkbox color="secondary" name="acess" value="yes" />
-            </Grid>
             <Grid item>
               <Button variant="contained" color="success">
                 Salvar
