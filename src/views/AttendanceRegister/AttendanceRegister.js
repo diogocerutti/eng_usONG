@@ -44,7 +44,7 @@ export default function AttendanceRegister() {
             <Autocomplete
               disablePortal
               id="user"
-              options={['algo', 'algo', 'algo']}
+              options={['Diogo', 'Marcos', 'Carlos', 'Marcela']}
               fullWidth
               renderInput={(params) => (
                 <TextField {...params} label="Usuário" name="user" required />
@@ -61,7 +61,17 @@ export default function AttendanceRegister() {
             <Autocomplete
               disablePortal
               id="animal"
-              options={['algo', 'algo', 'algo']}
+              options={[
+                'Max',
+                'Tobi',
+                'Rex',
+                'Golias',
+                'Laica',
+                'Spok',
+                'Luke',
+                'Flint',
+                'Cooper'
+              ]}
               fullWidth
               renderInput={(params) => (
                 <TextField {...params} label="Animal" name="animal" required />
@@ -81,7 +91,7 @@ export default function AttendanceRegister() {
             <Autocomplete
               disablePortal
               id="type"
-              options={['algo', 'algo', 'algo']}
+              options={['Banho', 'Tosa', 'Ração', 'Passeio', 'Amamentação']}
               fullWidth
               renderInput={(params) => (
                 <TextField

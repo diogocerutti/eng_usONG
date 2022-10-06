@@ -80,7 +80,7 @@ export default function Home() {
               <Autocomplete
                 disablePortal
                 id="raça"
-                options={['algo', 'algo', 'algo']}
+                options={['Golden', 'Husky', 'Poodle', 'Teste']}
                 renderInput={(params) => <TextField {...params} label="Raça" />}
               ></Autocomplete>
             </Grid>
@@ -89,7 +89,7 @@ export default function Home() {
               <Autocomplete
                 disablePortal
                 id="espécie"
-                options={['algo', 'algo', 'algo']}
+                options={['Canis', 'Leopardus', 'Rubus']}
                 renderInput={(params) => (
                   <TextField {...params} label="Espécie" />
                 )}
@@ -129,12 +129,14 @@ export default function Home() {
           <li key={i.animal_id} className="cards_item">
             <div className="card">
               <div className="card_image">
-                <img alt="Imagem" src="https://placedog.net/1000/563?id=51" />
+                <img alt="Imagem" src="https://placedog.net/640/480?r" />
               </div>
               <div className="card_content">
                 <h2 className="card_title">{i.nickname}</h2>
                 <p className="card_text">{i.description}</p>
                 <p className="card_text">Custos: {i.outgoing}</p>
+                <p className="card_text">ID da raça: {i.breed_id}</p>
+                <p className="card_text">ID da espécie: {i.specie_id}</p>
               </div>
             </div>
           </li>

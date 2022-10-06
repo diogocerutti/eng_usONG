@@ -63,7 +63,7 @@ export default function UserRegister() {
               <Autocomplete
                 disablePortal
                 id="breed"
-                options={['algo', 'algo', 'algo']}
+                options={['Golden', 'Husky', 'Poodle', 'Teste']}
                 fullWidth
                 renderInput={(params) => (
                   <TextField {...params} label="Raça" name="breed" required />
@@ -80,7 +80,7 @@ export default function UserRegister() {
               <Autocomplete
                 disablePortal
                 id="specie"
-                options={['algo', 'algo', 'algo']}
+                options={['Canis', 'Leopardus', 'Rubus', 'Algo']}
                 fullWidth
                 renderInput={(params) => (
                   <TextField

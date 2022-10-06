@@ -1,5 +1,6 @@
 import * as React from 'react'
 import HomeIcon from '@mui/icons-material/Home'
+import InfoIcon from '@mui/icons-material/Info'
 import NoteAltIcon from '@mui/icons-material/NoteAlt'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -29,6 +30,7 @@ import {
   Grid,
   Button
 } from '@mui/material'
+import { Logout } from '../../authValidation'
 
 const drawerWidth = 240
 
@@ -160,7 +162,11 @@ const Header = () => {
                 position: 'absolute'
               }}
             >
-              <Button>
+              <Button
+                onClick={() => {
+                  Logout()
+                }}
+              >
                 <Typography sx={{ color: 'white' }}>Sair</Typography>
               </Button>
             </Grid>
@@ -187,7 +193,7 @@ const Header = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            {['Home', 'Cadastros', 'Relatórios'].map((text, index) => (
+            {['Home', 'Cadastros', 'Relatórios', 'Sobre'].map((text, index) => (
               <ListItem
                 key={text}
                 disablePadding
@@ -239,6 +245,23 @@ const Header = () => {
                     >
                       <ListItemIcon>
                         <AssignmentIcon
+                          style={{ fontSize: '40px', color: 'white' }}
+                        />
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                    </ListItemButton>
+                  </>
+                )}
+                {index === 3 && (
+                  <>
+                    <ListItemButton
+                      onClick={(e) => {
+                        e.preventDefault()
+                        window.location.href = 'about'
+                      }}
+                    >
+                      <ListItemIcon>
+                        <InfoIcon
                           style={{ fontSize: '40px', color: 'white' }}
                         />
                       </ListItemIcon>
@@ -324,6 +347,18 @@ const Header = () => {
                               ></i>
                               Cadastro de Raça
                             </MenuItem>
+                            <MenuItem
+                              onClick={(e) => {
+                                e.preventDefault()
+                                window.location.href = 'typeregister'
+                              }}
+                            >
+                              <i
+                                class="fa-solid fa-notes-medical"
+                                style={{ fontSize: '21px' }}
+                              ></i>
+                              Cadastro de Tipo de At.
+                            </MenuItem>
                           </MenuList>
                         </ClickAwayListener>
                       </Paper>
@@ -358,19 +393,19 @@ const Header = () => {
                             <MenuItem
                               onClick={(e) => {
                                 e.preventDefault()
-                                window.location.href = '#'
+                                window.location.href = 'treatments'
                               }}
                             >
-                              <PersonIcon />
+                              <HeadsetMicIcon />
                               Atendimento
                             </MenuItem>
                             <MenuItem
                               onClick={(e) => {
                                 e.preventDefault()
-                                window.location.href = '#'
+                                window.location.href = 'users'
                               }}
                             >
-                              <HeadsetMicIcon />
+                              <PersonIcon />
                               Usuários
                             </MenuItem>
                             <MenuItem
@@ -388,7 +423,7 @@ const Header = () => {
                             <MenuItem
                               onClick={(e) => {
                                 e.preventDefault()
-                                window.location.href = '#'
+                                window.location.href = 'species'
                               }}
                             >
                               <i
@@ -400,7 +435,7 @@ const Header = () => {
                             <MenuItem
                               onClick={(e) => {
                                 e.preventDefault()
-                                window.location.href = '#'
+                                window.location.href = 'types'
                               }}
                             >
                               <i
